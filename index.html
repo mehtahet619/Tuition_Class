@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVISHKAR Tuition Classes</title>
+  <style>
+    .enroll-btn {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .enroll-btn:hover {
+        background-color: #218838;
+    }
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #f59e0b;
+      --light: #f3f4f6;
+      --dark: #1f2937;
+      --accent: #8b5cf6;
+      --gray: #6b7280;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f8fafc;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: var(--primary);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-icon {
+      margin-right: 10px;
+      font-size: 2.2rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    
+    .nav-links a:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      color: white;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.9)), url("/api/placeholder/1200/600") center/cover no-repeat;
+      color: white;
+      padding: 120px 0;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: var(--secondary);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      background-color: #e89309;
+      transform: translateY(-3px);
+    }
+    
+    /* Services Section */
+    .services {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--dark);
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background-color: var(--primary);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .service-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .service-icon {
+      background-color: var(--light);
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--primary);
+    }
+    
+    .service-content {
+      padding: 25px;
+    }
+    
+    .service-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+    
+    /* Experience Section */
+    .experience {
+      background-color: var(--light);
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .experience-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .experience-years {
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: block;
+    }
+    
+    /* Contact Section */
+    .contact {
+      padding: 80px 0;
+    }
+    
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    .contact-info {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    
+    .contact-icon {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-right: 15px;
+      min-width: 24px;
+    }
+    
+    .contact-text {
+      font-size: 1rem;
+    }
+    
+    .contact-form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .contact-form h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .submit-btn:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .footer-social a:hover {
+      background-color: var(--secondary);
+    }
+    
+    .copyright {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      
+      .experience-years {
+        font-size: 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">
+          <span class="logo-icon">📚</span>
+          AVISHKAR
+        </a>
+        <div class="nav-links">
+          <a href="#">Home</a>
+          <a href="#services">Services</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button class="mobile-menu-btn">☰</button>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Excellence in Education</h1>
+      <p>Quality tuition for CBSE and Gujarat Board students with personalized attention and proven results.</p>
+      <a href="https://forms.gle/wKKCevpTab5yVQcj9" target="_blank" class="enroll-btn">
+        Enroll Now
+    </a>
+    
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <span>📝</span>
+          </div>
+          <div class="service-content">
+            <h3>All Subjects (Class 1-8)</h3>
+            <p>Comprehensive tuition for all subjects for primary and middle school students following CBSE and Gujarat Board curriculum.</p>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <span>🔤</span>
+          </div>
+          <div class="service-content">
+            <h3>Language Specialization</h3>
+            <p>Expert teaching in Gujarati, Sanskrit, and Hindi from Classes 1 to 10 with focus on grammar, literature, and expression.</p>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <span>🎯</span>
+          </div>
+          <div class="service-content">
+            <h3>Personal Attention</h3>
+            <p>Individualized approach to learning with focused attention on each student's unique learning needs and pace.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Experience Section -->
+  <section class="experience" id="experience">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Experience</h2>
+      </div>
+      <div class="experience-content">
+        <span class="experience-years">20</span>
+        <h3>Years of Teaching Excellence</h3>
+        <p>With two decades of teaching experience, AVISHKAR Tuition Classes has helped thousands of students achieve academic success and build strong foundations in their education journey.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+      </div>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          
+          <div class="contact-detail">
+            <span class="contact-icon">📱</span>
+            <span class="contact-text">+91 9825275259</span>
+          </div>
+          
+          <div class="contact-detail">
+            <span class="contact-icon">📍</span>
+            <span class="contact-text">B-408, Avishkar Apartment, Maktampur Road, Bharuch, Gujarat - 392012</span>
+          </div>
+          
+          <div class="contact-detail">
+            <span class="contact-icon">⏰</span>
+            <span class="contact-text">Monday to Saturday: 9:00 AM - 7:00 PM</span>
+          </div>
+          
+          <div class="contact-detail">
+            <span class="contact-icon">✏️</span>
+            <span class="contact-text">Classes for CBSE & Gujarat Board (Class 1-8)<br>Gujarati, Sanskrit, Hindi (Class
